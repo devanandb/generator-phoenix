@@ -32,23 +32,23 @@ module.exports = Generator.extend({
 
     this.fs.copyTpl(
       this.templatePath('section.html'),
-      this.destinationPath('./client/views/sections/'+ this.props.component + '.html'),
+      this.destinationPath('./client/modules/'+ this.props.component + '/' + this.props.component + '.html'),
       { component: this.props.component }
 
     );
 
     this.fs.copyTpl(
       this.templatePath('styles.less'),
-      this.destinationPath('./client/less/sections/'+ this.props.component + '.less'),
+      this.destinationPath('./client/modules/'+ this.props.component + '/'+ this.props.component + '.less'),
       { component: this.props.component }
     );
 
-    var lessfilepath = './client/less/sections/index.less';
+    var lessfilepath = './client/less/layouts/index.less';
     var fileSrc = fs.readFileSync(lessfilepath,'utf8');
     var indexOf = fileSrc.indexOf('');
     var lineStart = fileSrc.substring(0,indexOf).lastIndexOf('\n') + 1;
     var indent = fileSrc.substring(lineStart,indexOf);
-    fileSrc = fileSrc.substring(0,indexOf) + "@import '" + this.props.component + ".less';" + "\n" + indent + fileSrc.substring(indexOf);
+    fileSrc = fileSrc.substring(0,indexOf) + "@import '../../modules/" + this.props.component + "/" + this.props.component + ".less';" + "\n" + indent + fileSrc.substring(indexOf);
     fs.writeFileSync(lessfilepath,fileSrc);
 
     this.log('Creating required files and including references.' + chalk.magenta(' Get to work now!'));
