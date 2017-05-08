@@ -29,7 +29,12 @@ module.exports = Generator.extend({
       {
         type: 'input',
         name: 'keywords',
-        message: 'Where will this module be used (comma separate the page types)? (For eg. Product, Homepage'
+        message: 'Where will this module be used (comma separate the page types)? (For eg. Product, Homepage)'
+      },
+      {
+        type: 'input',
+        name: 'author',
+        message: 'Your name?'
       }
     ];
 
@@ -48,8 +53,7 @@ module.exports = Generator.extend({
         component: this.props.component,
         private: this.props.private,
         keywords: this.props.keywords,
-        author: shelljs.exec('git config user.name', {silent: true}).output.replace(/\n/g, ''),
-        email: shelljs.exec('git config user.email', {silent: true}).output.replace(/\n/g, ''),
+        author: this.props.author
       }
 
     );
