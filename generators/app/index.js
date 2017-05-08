@@ -17,8 +17,19 @@ module.exports = Generator.extend({
       {
         type: 'input',
         name: 'component',
-        message: 'Please enter the "section" name you want to generate',
+        message: 'Please enter the "module" name you want to generate',
         default: 'section-name'
+      },
+      {
+        type: 'boolean',
+        name: 'private',
+        message: 'Is this module private?',
+        default: false
+      },
+      {
+        type: 'input',
+        name: 'keywords',
+        message: 'Where will this module be used (comma separate the page types)? (For eg. Product, Homepage'
       }
     ];
 
@@ -33,7 +44,13 @@ module.exports = Generator.extend({
     this.fs.copyTpl(
       this.templatePath('section.html'),
       this.destinationPath('./client/modules/'+ this.props.component + '/' + this.props.component + '.html'),
-      { component: this.props.component }
+      { 
+        component: this.props.component,
+        private: this.props.private,
+        keywords: this.props.keywords,
+        author: shelljs.exec('git config user.name', {silent: true}).output.replace(/\n/g, ''),
+        email: shelljs.exec('git config user.email', {silent: true}).output.replace(/\n/g, ''),
+      }
 
     );
 
@@ -42,6 +59,8 @@ module.exports = Generator.extend({
       this.destinationPath('./client/modules/'+ this.props.component + '/'+ this.props.component + '.less'),
       { component: this.props.component }
     );
+
+
 
     var lessfilepath = './client/less/layouts/index.less';
     var fileSrc = fs.readFileSync(lessfilepath,'utf8');
