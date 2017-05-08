@@ -1,6 +1,6 @@
 {
   "name": "generator-phoenix",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Helper generator to scaffold multiple pieces in the project",
   "homepage": "",
   "author": {
