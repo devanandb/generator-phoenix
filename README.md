@@ -1,5 +1,5 @@
 <h1 align="left">generator-phoenix</h1>
-### Helper generator to scaffold multiple pieces in the project
+<h5>Helper generator to scaffold multiple pieces in the project</h5>
 <br>
 <p align="left">
 <a href="https://www.npmjs.com/package/generator-phoenix"><img src="https://img.shields.io/npm/v/generator-phoenix.svg" alt="NPM"></a>
