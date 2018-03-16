@@ -5,7 +5,7 @@
 <a href="https://www.npmjs.com/package/generator-phoenix"><img src="https://img.shields.io/npm/l/generator-phoenix.svg" alt="NPM"></a>
 </p>
 
-# Helper generator to scaffold multiple pieces in the project
+### Helper generator to scaffold multiple pieces in the project
 
 ## Installation
 
