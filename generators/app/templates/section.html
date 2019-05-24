@@ -5,6 +5,6 @@
 	author: <%= author %>
 #}
 
-<section class="<%= component %>">
+<section {% if section.data.uuid and preview == "draft" %} data-uuid="{{ section.data.uuid }}" {% endif %} class="<%= component %>">
 	{# {{ section | dump }} #}
 </section>
